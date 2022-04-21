@@ -17,9 +17,15 @@
  */
 package com.github.shadowgry.coppertools;
 
+import com.github.shadowgry.coppertools.common.items.ModItems;
+
 import net.minecraftforge.fml.common.Mod;
 
 @Mod(CopperTools.MOD_ID)
 public class CopperTools {
     public static final String MOD_ID = "coppertools";
+    
+    public CopperTools() {
+        ModItems.registerItems();;
+    }
 }
