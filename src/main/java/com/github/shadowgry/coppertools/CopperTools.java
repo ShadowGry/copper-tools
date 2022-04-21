@@ -19,6 +19,8 @@ package com.github.shadowgry.coppertools;
 
 import com.github.shadowgry.coppertools.common.items.ModItems;
 
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod(CopperTools.MOD_ID)
@@ -28,4 +30,12 @@ public class CopperTools {
     public CopperTools() {
         ModItems.registerItems();;
     }
+    
+    public static final CreativeModeTab TAB_COPPER_TOOLS = new CreativeModeTab("copper_tools") {
+        
+        @Override
+        public ItemStack makeIcon() {
+            return new ItemStack(ModItems.COPPER_AXE.get());
+        }
+    };
 }
