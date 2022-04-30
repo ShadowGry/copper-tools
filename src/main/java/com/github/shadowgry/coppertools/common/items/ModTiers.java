@@ -15,27 +15,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package com.github.shadowgry.coppertools;
+package com.github.shadowgry.coppertools.common.items;
 
-import com.github.shadowgry.coppertools.common.items.ModItems;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraftforge.common.ForgeTier;
 
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.fml.common.Mod;
-
-@Mod(CopperTools.MOD_ID)
-public class CopperTools {
-    public static final String MOD_ID = "coppertools";
-    
-    public CopperTools() {
-        ModItems.registerItems();;
-    }
-    
-    public static final CreativeModeTab TAB_COPPER_TOOLS = new CreativeModeTab("copper_tools") {
-        
-        @Override
-        public ItemStack makeIcon() {
-            return new ItemStack(ModItems.COPPER_AXE.get());
-        }
-    };
+/**
+ * Provides custom tool tiers.
+ */
+public class ModTiers {
+    public static final ForgeTier COPPER = new ForgeTier(2, 250, 6.0F, 2.0F, 14, BlockTags.NEEDS_IRON_TOOL, () -> {
+        return Ingredient.of(Items.COPPER_INGOT);
+    });
 }
