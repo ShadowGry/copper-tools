@@ -49,6 +49,45 @@ public class ModItems {
     public static final RegistryObject<ArmorItem> COPPER_LEGGINGS   = ITEMS.register("copper_leggings",   () -> new ArmorItem(ModArmorMaterials.COPPER, EquipmentSlot.LEGS,  new Item.Properties().tab(CopperTools.TAB_COPPER_TOOLS)));
     public static final RegistryObject<ArmorItem> COPPER_BOOTS      = ITEMS.register("copper_boots",      () -> new ArmorItem(ModArmorMaterials.COPPER, EquipmentSlot.FEET,  new Item.Properties().tab(CopperTools.TAB_COPPER_TOOLS)));
     
+    // Exposed Copper Items
+    public static final RegistryObject<ShovelItem>  EXPOSED_COPPER_SHOVEL  = ITEMS.register("exposed_copper_shovel",  () -> new ShovelItem( ModTiers.EXPOSED_COPPER,  1.5F, -3.0F, new Item.Properties().tab(CopperTools.TAB_COPPER_TOOLS)));
+    public static final RegistryObject<PickaxeItem> EXPOSED_COPPER_PICKAXE = ITEMS.register("exposed_copper_pickaxe", () -> new PickaxeItem(ModTiers.EXPOSED_COPPER,  1,    -2.8F, new Item.Properties().tab(CopperTools.TAB_COPPER_TOOLS)));
+    public static final RegistryObject<AxeItem>     EXPOSED_COPPER_AXE     = ITEMS.register("exposed_copper_axe",     () -> new AxeItem(    ModTiers.EXPOSED_COPPER,  6.0F, -3.1F, new Item.Properties().tab(CopperTools.TAB_COPPER_TOOLS)));
+    public static final RegistryObject<HoeItem>     EXPOSED_COPPER_HOE     = ITEMS.register("exposed_copper_hoe",     () -> new HoeItem(    ModTiers.EXPOSED_COPPER, -2,    -1.0F, new Item.Properties().tab(CopperTools.TAB_COPPER_TOOLS)));
+    public static final RegistryObject<SwordItem>   EXPOSED_COPPER_SWORD   = ITEMS.register("exposed_copper_sword",   () -> new SwordItem(  ModTiers.EXPOSED_COPPER,  3,    -2.4F, new Item.Properties().tab(CopperTools.TAB_COPPER_TOOLS)));
+    
+    // Exposed Copper Armor
+    public static final RegistryObject<ArmorItem> EXPOSED_COPPER_HELMET     = ITEMS.register("exposed_copper_helmet",     () -> new ArmorItem(ModArmorMaterials.EXPOSED_COPPER, EquipmentSlot.HEAD,  new Item.Properties().tab(CopperTools.TAB_COPPER_TOOLS)));
+    public static final RegistryObject<ArmorItem> EXPOSED_COPPER_CHESTPLATE = ITEMS.register("exposed_copper_chestplate", () -> new ArmorItem(ModArmorMaterials.EXPOSED_COPPER, EquipmentSlot.CHEST, new Item.Properties().tab(CopperTools.TAB_COPPER_TOOLS)));
+    public static final RegistryObject<ArmorItem> EXPOSED_COPPER_LEGGINGS   = ITEMS.register("exposed_copper_leggings",   () -> new ArmorItem(ModArmorMaterials.EXPOSED_COPPER, EquipmentSlot.LEGS,  new Item.Properties().tab(CopperTools.TAB_COPPER_TOOLS)));
+    public static final RegistryObject<ArmorItem> EXPOSED_COPPER_BOOTS      = ITEMS.register("exposed_copper_boots",      () -> new ArmorItem(ModArmorMaterials.EXPOSED_COPPER, EquipmentSlot.FEET,  new Item.Properties().tab(CopperTools.TAB_COPPER_TOOLS)));
+    
+    // Weathered Copper Items
+    public static final RegistryObject<ShovelItem>  WEATHERED_COPPER_SHOVEL  = ITEMS.register("weathered_copper_shovel",  () -> new ShovelItem( ModTiers.WEATHERED_COPPER,  1.5F, -3.0F, new Item.Properties().tab(CopperTools.TAB_COPPER_TOOLS)));
+    public static final RegistryObject<PickaxeItem> WEATHERED_COPPER_PICKAXE = ITEMS.register("weathered_copper_pickaxe", () -> new PickaxeItem(ModTiers.WEATHERED_COPPER,  1,    -2.8F, new Item.Properties().tab(CopperTools.TAB_COPPER_TOOLS)));
+    public static final RegistryObject<AxeItem>     WEATHERED_COPPER_AXE     = ITEMS.register("weathered_copper_axe",     () -> new AxeItem(    ModTiers.WEATHERED_COPPER,  6.0F, -3.1F, new Item.Properties().tab(CopperTools.TAB_COPPER_TOOLS)));
+    public static final RegistryObject<HoeItem>     WEATHERED_COPPER_HOE     = ITEMS.register("weathered_copper_hoe",     () -> new HoeItem(    ModTiers.WEATHERED_COPPER, -2,    -1.0F, new Item.Properties().tab(CopperTools.TAB_COPPER_TOOLS)));
+    public static final RegistryObject<SwordItem>   WEATHERED_COPPER_SWORD   = ITEMS.register("weathered_copper_sword",   () -> new SwordItem(  ModTiers.WEATHERED_COPPER,  3,    -2.4F, new Item.Properties().tab(CopperTools.TAB_COPPER_TOOLS)));
+    
+    // Weathered Copper Armor
+    public static final RegistryObject<ArmorItem> WEATHERED_COPPER_HELMET     = ITEMS.register("weathered_copper_helmet",     () -> new ArmorItem(ModArmorMaterials.WEATHERED_COPPER, EquipmentSlot.HEAD,  new Item.Properties().tab(CopperTools.TAB_COPPER_TOOLS)));
+    public static final RegistryObject<ArmorItem> WEATHERED_COPPER_CHESTPLATE = ITEMS.register("weathered_copper_chestplate", () -> new ArmorItem(ModArmorMaterials.WEATHERED_COPPER, EquipmentSlot.CHEST, new Item.Properties().tab(CopperTools.TAB_COPPER_TOOLS)));
+    public static final RegistryObject<ArmorItem> WEATHERED_COPPER_LEGGINGS   = ITEMS.register("weathered_copper_leggings",   () -> new ArmorItem(ModArmorMaterials.WEATHERED_COPPER, EquipmentSlot.LEGS,  new Item.Properties().tab(CopperTools.TAB_COPPER_TOOLS)));
+    public static final RegistryObject<ArmorItem> WEATHERED_COPPER_BOOTS      = ITEMS.register("weathered_copper_boots",      () -> new ArmorItem(ModArmorMaterials.WEATHERED_COPPER, EquipmentSlot.FEET,  new Item.Properties().tab(CopperTools.TAB_COPPER_TOOLS)));
+    
+    // Oxidized Copper Items
+    public static final RegistryObject<ShovelItem>  OXIDIZED_COPPER_SHOVEL  = ITEMS.register("oxidized_copper_shovel",  () -> new ShovelItem( ModTiers.OXIDIZED_COPPER,  1.5F, -3.0F, new Item.Properties().tab(CopperTools.TAB_COPPER_TOOLS)));
+    public static final RegistryObject<PickaxeItem> OXIDIZED_COPPER_PICKAXE = ITEMS.register("oxidized_copper_pickaxe", () -> new PickaxeItem(ModTiers.OXIDIZED_COPPER,  1,    -2.8F, new Item.Properties().tab(CopperTools.TAB_COPPER_TOOLS)));
+    public static final RegistryObject<AxeItem>     OXIDIZED_COPPER_AXE     = ITEMS.register("oxidized_copper_axe",     () -> new AxeItem(    ModTiers.OXIDIZED_COPPER,  6.0F, -3.1F, new Item.Properties().tab(CopperTools.TAB_COPPER_TOOLS)));
+    public static final RegistryObject<HoeItem>     OXIDIZED_COPPER_HOE     = ITEMS.register("oxidized_copper_hoe",     () -> new HoeItem(    ModTiers.OXIDIZED_COPPER, -2,    -1.0F, new Item.Properties().tab(CopperTools.TAB_COPPER_TOOLS)));
+    public static final RegistryObject<SwordItem>   OXIDIZED_COPPER_SWORD   = ITEMS.register("oxidized_copper_sword",   () -> new SwordItem(  ModTiers.OXIDIZED_COPPER,  3,    -2.4F, new Item.Properties().tab(CopperTools.TAB_COPPER_TOOLS)));
+    
+    // Oxidized Copper Armor
+    public static final RegistryObject<ArmorItem> OXIDIZED_COPPER_HELMET     = ITEMS.register("oxidized_copper_helmet",     () -> new ArmorItem(ModArmorMaterials.OXIDIZED_COPPER, EquipmentSlot.HEAD,  new Item.Properties().tab(CopperTools.TAB_COPPER_TOOLS)));
+    public static final RegistryObject<ArmorItem> OXIDIZED_COPPER_CHESTPLATE = ITEMS.register("oxidized_copper_chestplate", () -> new ArmorItem(ModArmorMaterials.OXIDIZED_COPPER, EquipmentSlot.CHEST, new Item.Properties().tab(CopperTools.TAB_COPPER_TOOLS)));
+    public static final RegistryObject<ArmorItem> OXIDIZED_COPPER_LEGGINGS   = ITEMS.register("oxidized_copper_leggings",   () -> new ArmorItem(ModArmorMaterials.OXIDIZED_COPPER, EquipmentSlot.LEGS,  new Item.Properties().tab(CopperTools.TAB_COPPER_TOOLS)));
+    public static final RegistryObject<ArmorItem> OXIDIZED_COPPER_BOOTS      = ITEMS.register("oxidized_copper_boots",      () -> new ArmorItem(ModArmorMaterials.OXIDIZED_COPPER, EquipmentSlot.FEET,  new Item.Properties().tab(CopperTools.TAB_COPPER_TOOLS)));
+    
     public static void registerItems() {
         ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
