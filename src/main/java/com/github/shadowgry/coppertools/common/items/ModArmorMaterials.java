@@ -34,6 +34,24 @@ public enum ModArmorMaterials implements ArmorMaterial {
                 return Ingredient.of(Items.COPPER_INGOT);
             },
             0.0F
+    ),
+    EXPOSED_COPPER(25, new int[] {2, 5, 6, 2}, 12, SoundEvents.ARMOR_EQUIP_IRON,
+            CopperTools.MOD_ID + ":exposed_copper", 1.0F, () -> {
+                return Ingredient.of(Items.COPPER_INGOT);
+            },
+            0.0F
+    ),
+    WEATHERED_COPPER(25, new int[] {2, 5, 6, 2}, 12, SoundEvents.ARMOR_EQUIP_IRON,
+            CopperTools.MOD_ID + ":weathered_copper", 1.0F, () -> {
+                return Ingredient.of(Items.COPPER_INGOT);
+            },
+            0.0F
+    ),
+    OXIDIZED_COPPER(25, new int[] {2, 5, 6, 2}, 12, SoundEvents.ARMOR_EQUIP_IRON,
+            CopperTools.MOD_ID + ":oxidized_copper", 1.0F, () -> {
+                return Ingredient.of(Items.COPPER_INGOT);
+            },
+            0.0F
     );
     
     private static int[] MAX_DAMAGE = new int[] {11, 16, 15, 13};
