@@ -16,7 +16,7 @@ plugins {
 apply plugin: 'net.minecraftforge.gradle'
 
 
-version = '1.18.2-0.0.0.1'
+version = '1.18.2-0.0.0.2'
 group = 'io.github.shadowgry.coppertools' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'coppertools'
 
