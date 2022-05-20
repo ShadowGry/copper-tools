@@ -50,6 +50,24 @@ public class ModEventHandler {
      */
     private Map<Item, OxidizeData> oxidizeData;
     
+    /**
+     * The damage value required before the tool oxidizes to the next stage.
+     */
+    private final int[] OXIDIZE_DAMAGE = new int[] {
+        ModTiers.COPPER.getUses() / 4,
+        ModTiers.EXPOSED_COPPER.getUses() * 1/2,
+        ModTiers.WEATHERED_COPPER.getUses() * 3/4
+    };
+    
+    /**
+     * The initial damage of the next oxidized tool.
+     */
+    private final int[] START_DAMAGE = new int[] {
+        ModTiers.EXPOSED_COPPER.getUses() / 4,
+        ModTiers.WEATHERED_COPPER.getUses() * 1/2,
+        ModTiers.OXIDIZED_COPPER.getUses() * 3/4
+    };
+    
     public ModEventHandler() {
         isMapInitialized  = false;
         oxidizeData = null;
@@ -63,23 +81,62 @@ public class ModEventHandler {
      */
     private void initializeMap() {
         oxidizeData = new HashMap<>();
+        
+        oxidizeData.put(ModItems.COPPER_SHOVEL.get().asItem(),
+                        new OxidizeData(ModItems.EXPOSED_COPPER_SHOVEL.get().getDefaultInstance(),
+                            OXIDIZE_DAMAGE[0], START_DAMAGE[0]));
+        oxidizeData.put(ModItems.EXPOSED_COPPER_SHOVEL.get().asItem(),
+                        new OxidizeData(ModItems.WEATHERED_COPPER_SHOVEL.get().getDefaultInstance(),
+                            OXIDIZE_DAMAGE[1], START_DAMAGE[1]));
+        oxidizeData.put(ModItems.WEATHERED_COPPER_HOE.get().asItem(),
+                        new OxidizeData(ModItems.OXIDIZED_COPPER_SHOVEL.get().getDefaultInstance(),
+                            OXIDIZE_DAMAGE[2], START_DAMAGE[2]));
+        
         oxidizeData.put(ModItems.COPPER_PICKAXE.get().asItem(),
                         new OxidizeData(ModItems.EXPOSED_COPPER_PICKAXE.get().getDefaultInstance(),
-                            ModTiers.COPPER.getUses()/4,
-                            ModTiers.EXPOSED_COPPER.getUses()/4));
+                            OXIDIZE_DAMAGE[0], START_DAMAGE[0]));
         oxidizeData.put(ModItems.EXPOSED_COPPER_PICKAXE.get().asItem(),
                         new OxidizeData(ModItems.WEATHERED_COPPER_PICKAXE.get().getDefaultInstance(),
-                            ModTiers.EXPOSED_COPPER.getUses() * 1/2,
-                            ModTiers.WEATHERED_COPPER.getUses() * 1/2));
+                            OXIDIZE_DAMAGE[1], START_DAMAGE[1]));
         oxidizeData.put(ModItems.WEATHERED_COPPER_PICKAXE.get().asItem(),
                         new OxidizeData(ModItems.OXIDIZED_COPPER_PICKAXE.get().getDefaultInstance(),
-                                ModTiers.WEATHERED_COPPER.getUses() * 3/4,
-                                ModTiers.OXIDIZED_COPPER.getUses() * 3/4));
+                            OXIDIZE_DAMAGE[2], START_DAMAGE[2]));
+        
+        oxidizeData.put(ModItems.COPPER_AXE.get().asItem(),
+                        new OxidizeData(ModItems.EXPOSED_COPPER_AXE.get().getDefaultInstance(),
+                            OXIDIZE_DAMAGE[0], START_DAMAGE[0]));
+        oxidizeData.put(ModItems.EXPOSED_COPPER_AXE.get().asItem(),
+                        new OxidizeData(ModItems.WEATHERED_COPPER_AXE.get().getDefaultInstance(),
+                            OXIDIZE_DAMAGE[1], START_DAMAGE[1]));
+        oxidizeData.put(ModItems.WEATHERED_COPPER_AXE.get().asItem(),
+                        new OxidizeData(ModItems.OXIDIZED_COPPER_AXE.get().getDefaultInstance(),
+                            OXIDIZE_DAMAGE[2], START_DAMAGE[2]));
+        
+        oxidizeData.put(ModItems.COPPER_HOE.get().asItem(),
+                        new OxidizeData(ModItems.EXPOSED_COPPER_HOE.get().getDefaultInstance(),
+                            OXIDIZE_DAMAGE[0], START_DAMAGE[0]));
+        oxidizeData.put(ModItems.EXPOSED_COPPER_HOE.get().asItem(),
+                        new OxidizeData(ModItems.WEATHERED_COPPER_HOE.get().getDefaultInstance(),
+                            OXIDIZE_DAMAGE[1], START_DAMAGE[1]));
+        oxidizeData.put(ModItems.WEATHERED_COPPER_HOE.get().asItem(),
+                        new OxidizeData(ModItems.OXIDIZED_COPPER_HOE.get().getDefaultInstance(),
+                            OXIDIZE_DAMAGE[2], START_DAMAGE[2]));
+        
+        oxidizeData.put(ModItems.COPPER_SWORD.get().asItem(),
+                        new OxidizeData(ModItems.EXPOSED_COPPER_SWORD.get().getDefaultInstance(),
+                            OXIDIZE_DAMAGE[0], START_DAMAGE[0]));
+        oxidizeData.put(ModItems.EXPOSED_COPPER_SWORD.get().asItem(),
+                        new OxidizeData(ModItems.WEATHERED_COPPER_SWORD.get().getDefaultInstance(),
+                            OXIDIZE_DAMAGE[1], START_DAMAGE[1]));
+        oxidizeData.put(ModItems.WEATHERED_COPPER_SWORD.get().asItem(),
+                        new OxidizeData(ModItems.OXIDIZED_COPPER_SWORD.get().getDefaultInstance(),
+                            OXIDIZE_DAMAGE[2], START_DAMAGE[2]));
+        
         isMapInitialized = true;
     }
     
     /**
-     * Oxidizes copper pickaxes to the next stage when they are damaged enough.
+     * Oxidizes copper tools to the next stage when they are damaged enough from breaking blocks.
      */
     @SubscribeEvent
     public void onBreakEvent(BreakEvent event) {
