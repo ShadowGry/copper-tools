@@ -18,6 +18,7 @@
 package com.github.shadowgry.coppertools.client.events;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.github.shadowgry.coppertools.common.items.ModItems;
@@ -32,6 +33,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.world.BlockEvent.BreakEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.registries.RegistryObject;
 
 /**
  * Implements copper tool oxidizations.
@@ -74,65 +76,34 @@ public class ModEventHandler {
     }
     
     /**
-     * Puts the copper pickaxe oxidization orderings into a map, for quick future lookup. Sets {@code isMapInitialized}
-     * to true, as this only needs to be run once.
+     * Puts the copper tool oxidization orderings into a map, for quick future lookup. Sets {@code isMapInitialized} to
+     * true, as this only needs to be run once.
      * 
      * TODO: Run earlier during mod loading, rather than on first BreakEvent. 
      */
     private void initializeMap() {
+        List< List<RegistryObject<?>> > copper_tools = List.of(
+            List.of(ModItems.COPPER_SHOVEL, ModItems.EXPOSED_COPPER_SHOVEL, ModItems.WEATHERED_COPPER_SHOVEL, ModItems.OXIDIZED_COPPER_SHOVEL),
+            List.of(ModItems.COPPER_PICKAXE, ModItems.EXPOSED_COPPER_PICKAXE, ModItems.WEATHERED_COPPER_PICKAXE, ModItems.OXIDIZED_COPPER_PICKAXE),
+            List.of(ModItems.COPPER_AXE, ModItems.EXPOSED_COPPER_AXE, ModItems.WEATHERED_COPPER_AXE, ModItems.OXIDIZED_COPPER_AXE),
+            List.of(ModItems.COPPER_HOE, ModItems.EXPOSED_COPPER_HOE, ModItems.WEATHERED_COPPER_HOE, ModItems.OXIDIZED_COPPER_HOE),
+            List.of(ModItems.COPPER_SWORD, ModItems.EXPOSED_COPPER_SWORD, ModItems.WEATHERED_COPPER_SWORD, ModItems.OXIDIZED_COPPER_SWORD)
+        );
+        
         oxidizeData = new HashMap<>();
-        
-        oxidizeData.put(ModItems.COPPER_SHOVEL.get().asItem(),
-                        new OxidizeData(ModItems.EXPOSED_COPPER_SHOVEL.get().getDefaultInstance(),
-                            OXIDIZE_DAMAGE[0], START_DAMAGE[0]));
-        oxidizeData.put(ModItems.EXPOSED_COPPER_SHOVEL.get().asItem(),
-                        new OxidizeData(ModItems.WEATHERED_COPPER_SHOVEL.get().getDefaultInstance(),
-                            OXIDIZE_DAMAGE[1], START_DAMAGE[1]));
-        oxidizeData.put(ModItems.WEATHERED_COPPER_HOE.get().asItem(),
-                        new OxidizeData(ModItems.OXIDIZED_COPPER_SHOVEL.get().getDefaultInstance(),
-                            OXIDIZE_DAMAGE[2], START_DAMAGE[2]));
-        
-        oxidizeData.put(ModItems.COPPER_PICKAXE.get().asItem(),
-                        new OxidizeData(ModItems.EXPOSED_COPPER_PICKAXE.get().getDefaultInstance(),
-                            OXIDIZE_DAMAGE[0], START_DAMAGE[0]));
-        oxidizeData.put(ModItems.EXPOSED_COPPER_PICKAXE.get().asItem(),
-                        new OxidizeData(ModItems.WEATHERED_COPPER_PICKAXE.get().getDefaultInstance(),
-                            OXIDIZE_DAMAGE[1], START_DAMAGE[1]));
-        oxidizeData.put(ModItems.WEATHERED_COPPER_PICKAXE.get().asItem(),
-                        new OxidizeData(ModItems.OXIDIZED_COPPER_PICKAXE.get().getDefaultInstance(),
-                            OXIDIZE_DAMAGE[2], START_DAMAGE[2]));
-        
-        oxidizeData.put(ModItems.COPPER_AXE.get().asItem(),
-                        new OxidizeData(ModItems.EXPOSED_COPPER_AXE.get().getDefaultInstance(),
-                            OXIDIZE_DAMAGE[0], START_DAMAGE[0]));
-        oxidizeData.put(ModItems.EXPOSED_COPPER_AXE.get().asItem(),
-                        new OxidizeData(ModItems.WEATHERED_COPPER_AXE.get().getDefaultInstance(),
-                            OXIDIZE_DAMAGE[1], START_DAMAGE[1]));
-        oxidizeData.put(ModItems.WEATHERED_COPPER_AXE.get().asItem(),
-                        new OxidizeData(ModItems.OXIDIZED_COPPER_AXE.get().getDefaultInstance(),
-                            OXIDIZE_DAMAGE[2], START_DAMAGE[2]));
-        
-        oxidizeData.put(ModItems.COPPER_HOE.get().asItem(),
-                        new OxidizeData(ModItems.EXPOSED_COPPER_HOE.get().getDefaultInstance(),
-                            OXIDIZE_DAMAGE[0], START_DAMAGE[0]));
-        oxidizeData.put(ModItems.EXPOSED_COPPER_HOE.get().asItem(),
-                        new OxidizeData(ModItems.WEATHERED_COPPER_HOE.get().getDefaultInstance(),
-                            OXIDIZE_DAMAGE[1], START_DAMAGE[1]));
-        oxidizeData.put(ModItems.WEATHERED_COPPER_HOE.get().asItem(),
-                        new OxidizeData(ModItems.OXIDIZED_COPPER_HOE.get().getDefaultInstance(),
-                            OXIDIZE_DAMAGE[2], START_DAMAGE[2]));
-        
-        oxidizeData.put(ModItems.COPPER_SWORD.get().asItem(),
-                        new OxidizeData(ModItems.EXPOSED_COPPER_SWORD.get().getDefaultInstance(),
-                            OXIDIZE_DAMAGE[0], START_DAMAGE[0]));
-        oxidizeData.put(ModItems.EXPOSED_COPPER_SWORD.get().asItem(),
-                        new OxidizeData(ModItems.WEATHERED_COPPER_SWORD.get().getDefaultInstance(),
-                            OXIDIZE_DAMAGE[1], START_DAMAGE[1]));
-        oxidizeData.put(ModItems.WEATHERED_COPPER_SWORD.get().asItem(),
-                        new OxidizeData(ModItems.OXIDIZED_COPPER_SWORD.get().getDefaultInstance(),
-                            OXIDIZE_DAMAGE[2], START_DAMAGE[2]));
-        
+        for(List<RegistryObject<?>> tool_set : copper_tools) {
+            addOxidizeData(tool_set);
+        }
         isMapInitialized = true;
+    }
+    
+    private void addOxidizeData(List<RegistryObject<?>> items) {
+        int size = items.size() - 1;
+        for(int i = 0; i < size; i++) {
+            oxidizeData.put(((Item) items.get(i).get()).asItem(),
+                            new OxidizeData(((Item) items.get(i+1).get()).getDefaultInstance(),
+                                            OXIDIZE_DAMAGE[i], START_DAMAGE[i]));
+        }
     }
     
     /**
