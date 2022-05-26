@@ -101,8 +101,7 @@ public class ModEventHandler {
         int size = items.size() - 1;
         for(int i = 0; i < size; i++) {
             oxidizeData.put(((Item) items.get(i).get()).asItem(),
-                            new OxidizeData(((Item) items.get(i+1).get()).getDefaultInstance(),
-                                            OXIDIZE_DAMAGE[i], START_DAMAGE[i]));
+                            new OxidizeData((Item) items.get(i+1).get(), OXIDIZE_DAMAGE[i], START_DAMAGE[i]));
         }
     }
     
@@ -121,9 +120,9 @@ public class ModEventHandler {
             OxidizeData data = oxidizeData.get(item.getItem());
 
             if(data != null && item.getDamageValue() > data.getOxidizeDamageValue()) {
-                ItemStack nextPickaxe = data.getNextTool();
-                nextPickaxe.setDamageValue(data.getStartDamageValue());
-                player.setItemInHand(InteractionHand.MAIN_HAND, nextPickaxe);
+                ItemStack nextTool = data.getNextTool().getDefaultInstance();
+                nextTool.setDamageValue(data.getStartDamageValue());
+                player.setItemInHand(InteractionHand.MAIN_HAND, nextTool);
             }
         }
     }
@@ -134,7 +133,7 @@ public class ModEventHandler {
      * is recommended to use a map to store it and map it to the appropriate instance of this class.
      */
     private class OxidizeData {
-        private ItemStack nextTool;
+        private Item nextTool;
         private int oxidizeDamageValue;
         private int startDamageValue;
         
@@ -145,7 +144,7 @@ public class ModEventHandler {
          * @param oxidizeDamageValue the damage value required for the previous tool to oxidize into {@code nextTool}
          * @param startDamageValue the initial damage of {@code nextTool}
          */
-        OxidizeData(ItemStack nextTool, int oxidizeDamageValue, int startDamageValue) {
+        OxidizeData(Item nextTool, int oxidizeDamageValue, int startDamageValue) {
             this.nextTool = nextTool;
             this.oxidizeDamageValue = oxidizeDamageValue;
             this.startDamageValue = startDamageValue;
@@ -156,7 +155,7 @@ public class ModEventHandler {
          * 
          * @return the next tool the old one turns into.
          */
-        ItemStack getNextTool() {
+        Item getNextTool() {
             return this.nextTool;
         }
         
