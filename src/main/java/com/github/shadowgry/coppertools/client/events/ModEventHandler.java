@@ -31,6 +31,8 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraftforge.event.world.BlockEvent.BreakEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.registries.RegistryObject;
@@ -118,9 +120,10 @@ public class ModEventHandler {
         if(!player.isCreative()) {
             ItemStack item = player.getMainHandItem();
             OxidizeData data = oxidizeData.get(item.getItem());
-
+            
             if(data != null && item.getDamageValue() > data.getOxidizeDamageValue()) {
                 ItemStack nextTool = data.getNextTool().getDefaultInstance();
+                copyModifications(item, nextTool);
                 nextTool.setDamageValue(data.getStartDamageValue());
                 player.setItemInHand(InteractionHand.MAIN_HAND, nextTool);
             }
@@ -128,9 +131,30 @@ public class ModEventHandler {
     }
     
     /**
+     * Copies (if any) custom hover name, enchantments, and current repair cost of an item to another.
+     * 
+     * @param oldItem the item with the custom name, enchantments, and repair cost to copy over.
+     * @param newItem the item to have the custom name, enchantments, and repair cost copied to.
+     */
+    private void copyModifications(ItemStack oldItem, ItemStack newItem) {
+        if(oldItem.hasCustomHoverName()) {
+            newItem.setHoverName(oldItem.getHoverName());
+        }
+        if(oldItem.isEnchanted() && newItem.isEnchantable()) {
+            Map<Enchantment, Integer> enchantments = EnchantmentHelper.getEnchantments(oldItem);
+            for(Map.Entry<Enchantment, Integer> entry : enchantments.entrySet()) {
+                newItem.enchant(entry.getKey(), entry.getValue());
+            }
+        }
+        if(oldItem.isRepairable() && newItem.isRepairable()) {
+            newItem.setRepairCost(oldItem.getBaseRepairCost());
+        }
+    }
+    
+    /**
      * Stores information to appropriately oxidize a copper tool to the next tool. Copper tools oxidize in a linear way.
-     * The current (or previous tool) oxidizes to {@nextTool}, however, previous tool is not stored in this class - it
-     * is recommended to use a map to store it and map it to the appropriate instance of this class.
+     * The current (or previous tool) oxidizes to {@code nextTool}, however, previous tool is not stored in this class -
+     * it is recommended to use a map to store it and map it to the appropriate instance of this class.
      */
     private class OxidizeData {
         private Item nextTool;
