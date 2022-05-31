@@ -33,6 +33,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.event.world.BlockEvent.BreakEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.registries.RegistryObject;
@@ -112,11 +113,29 @@ public class ModEventHandler {
      */
     @SubscribeEvent
     public void onBreakEvent(BreakEvent event) {
+        Player player = event.getPlayer();
+        oxidizeTool(player);
+    }
+    
+    /**
+     * Oxidizes copper tools to the next stage when they are damaged enough from modifying blocks.
+     */
+    @SubscribeEvent
+    public void onToolModificationEvent(BlockEvent.BlockToolModificationEvent event) {
+        Player player = event.getPlayer();
+        oxidizeTool(player);
+    }
+    
+    /**
+     * Oxidizes a tool in the selected player's hand if it is damaged enough.
+     * 
+     * @param player the player where an oxidization may occur.
+     */
+    private void oxidizeTool(Player player) {
         if(!isMapInitialized) {
             initializeMap();
         }
         
-        Player player = event.getPlayer();
         if(!player.isCreative()) {
             ItemStack item = player.getMainHandItem();
             OxidizeData data = oxidizeData.get(item.getItem());
