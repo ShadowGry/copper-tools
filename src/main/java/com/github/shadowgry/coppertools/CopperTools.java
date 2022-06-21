@@ -17,10 +17,12 @@
  */
 package com.github.shadowgry.coppertools;
 
+import com.github.shadowgry.coppertools.client.events.ModEventHandler;
 import com.github.shadowgry.coppertools.common.items.ModItems;
 
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod(CopperTools.MOD_ID)
@@ -28,7 +30,8 @@ public class CopperTools {
     public static final String MOD_ID = "coppertools";
     
     public CopperTools() {
-        ModItems.registerItems();;
+        ModItems.registerItems();
+        MinecraftForge.EVENT_BUS.register(new ModEventHandler());
     }
     
     public static final CreativeModeTab TAB_COPPER_TOOLS = new CreativeModeTab("copper_tools") {
