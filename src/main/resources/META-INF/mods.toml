@@ -1,6 +1,6 @@
 # Non-Mod-Specific Properties
 modLoader = "javafml"
-loaderVersion = "[40,)"
+loaderVersion = "[41,)"
 license = "GNU General Public License v3.0"
 issueTrackerURL = "https://github.com/ShadowGry/copper-tools/issues"
 
@@ -9,23 +9,23 @@ issueTrackerURL = "https://github.com/ShadowGry/copper-tools/issues"
     modId = "coppertools"
     version = "${file.jarVersion}"
     displayName = "Copper Tools"
-    updateJSONURL="https://gist.githubusercontent.com/ShadowGry/14a305b7504d70e244b0757423548dd8/raw"
+    updateJSONURL = "https://gist.githubusercontent.com/ShadowGry/14a305b7504d70e244b0757423548dd8/raw"
     displayURL = "https://github.com/ShadowGry/copper-tools"
     #logoFile = ""
     authors = "ShadowGry"
-    description="Adds copper tools and armor that oxidize over time."
+    description = "Adds copper tools and armor that oxidize over time."
 
 # Dependency Configurations
 [[dependencies.coppertools]]
     modId = "forge"
     mandatory = true
-    versionRange = "[40,)"
+    versionRange = "[41,)"
     ordering = "NONE"
     side = "BOTH"
 
 [[dependencies.coppertools]]
     modId = "minecraft"
     mandatory = true
-    versionRange = "[1.18.2,1.19)"
+    versionRange = "[1.19,1.20)"
     ordering = "NONE"
     side = "BOTH"

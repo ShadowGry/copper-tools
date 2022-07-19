@@ -33,8 +33,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraftforge.event.world.BlockEvent;
-import net.minecraftforge.event.world.BlockEvent.BreakEvent;
+import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -112,7 +111,7 @@ public class ModEventHandler {
      * Oxidizes copper tools to the next stage when they are damaged enough from breaking blocks.
      */
     @SubscribeEvent
-    public void onBreakEvent(BreakEvent event) {
+    public void onBreakEvent(BlockEvent.BreakEvent event) {
         Player player = event.getPlayer();
         oxidizeTool(player);
     }
