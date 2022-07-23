@@ -28,11 +28,13 @@ import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.registries.RegistryObject;
@@ -126,6 +128,21 @@ public class OxidizeEventHandler {
         if(!event.getPlayer().level.isClientSide()) {
             Player player = event.getPlayer();
             oxidizeTool(player);
+        }
+    }
+    
+    /**
+     * Oxidizes copper tools to the next stage when they are damaged enough from attacking living entities.
+     * 
+     * @param event the LivingDamageEvent.
+     */
+    @SubscribeEvent
+    public void onLivingDamageEvent(LivingDamageEvent event) {
+        if(!event.getEntity().level.isClientSide()) {
+            Entity entity = event.getSource().getDirectEntity();
+            if(entity instanceof Player) {
+                oxidizeTool((Player) entity);
+            }
         }
     }
     
