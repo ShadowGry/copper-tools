@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package com.github.shadowgry.coppertools.client.events;
+package com.github.shadowgry.coppertools.common.events;
 
 import java.util.HashMap;
 import java.util.List;
@@ -40,7 +40,7 @@ import net.minecraftforge.registries.RegistryObject;
 /**
  * Implements copper tool oxidizations.
  */
-public class ModEventHandler {
+public class OxidizeEventHandler {
     
     public static final Logger LOGGER = LogUtils.getLogger();
     
@@ -72,7 +72,7 @@ public class ModEventHandler {
         ModTiers.OXIDIZED_COPPER.getUses() * 3/4
     };
     
-    public ModEventHandler() {
+    public OxidizeEventHandler() {
         isMapInitialized  = false;
         oxidizeData = null;
     }
