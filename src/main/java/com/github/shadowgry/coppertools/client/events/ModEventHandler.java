@@ -112,8 +112,10 @@ public class ModEventHandler {
      */
     @SubscribeEvent
     public void onBreakEvent(BlockEvent.BreakEvent event) {
-        Player player = event.getPlayer();
-        oxidizeTool(player);
+        if(!event.getPlayer().level.isClientSide()) {
+            Player player = event.getPlayer();
+            oxidizeTool(player);
+        }
     }
     
     /**
@@ -121,8 +123,10 @@ public class ModEventHandler {
      */
     @SubscribeEvent
     public void onToolModificationEvent(BlockEvent.BlockToolModificationEvent event) {
-        Player player = event.getPlayer();
-        oxidizeTool(player);
+        if(!event.getPlayer().level.isClientSide()) {
+            Player player = event.getPlayer();
+            oxidizeTool(player);
+        }
     }
     
     /**
