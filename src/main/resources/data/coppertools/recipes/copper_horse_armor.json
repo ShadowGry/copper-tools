@@ -1,16 +1,16 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "X X",
-    "XXX",
-    "X X"
-  ],
-  "key": {
-    "X": {
-      "item": "minecraft:copper_ingot"
-    }
-  },
-  "result": {
-    "item": "coppertools:copper_horse_armor"
-  }
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"X X",
+		"XXX",
+		"X X"
+	],
+	"key": {
+		"X": {
+			"item": "minecraft:copper_ingot"
+		}
+	},
+	"result": {
+		"item": "coppertools:copper_horse_armor"
+	}
 }

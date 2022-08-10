@@ -1,91 +1,91 @@
 {
-  "itemGroup.copper_tools": "Copper Tools",
-  
-  "item.coppertools.copper_shovel":  "Copper Shovel",
-  "item.coppertools.copper_pickaxe": "Copper Pickaxe",
-  "item.coppertools.copper_axe":     "Copper Axe",
-  "item.coppertools.copper_hoe":     "Copper Hoe",
-  "item.coppertools.copper_sword":   "Copper Sword",
-  
-  "item.coppertools.copper_helmet":     "Copper Helmet",
-  "item.coppertools.copper_chestplate": "Copper Chestplate",
-  "item.coppertools.copper_leggings":   "Copper Leggings",
-  "item.coppertools.copper_boots":      "Copper Boots",
-  
-  "item.coppertools.exposed_copper_shovel":  "Exposed Copper Shovel",
-  "item.coppertools.exposed_copper_pickaxe": "Exposed Copper Pickaxe",
-  "item.coppertools.exposed_copper_axe":     "Exposed Copper Axe",
-  "item.coppertools.exposed_copper_hoe":     "Exposed Copper Hoe",
-  "item.coppertools.exposed_copper_sword":   "Exposed Copper Sword",
-  
-  "item.coppertools.exposed_copper_helmet":     "Exposed Copper Helmet",
-  "item.coppertools.exposed_copper_chestplate": "Exposed Copper Chestplate",
-  "item.coppertools.exposed_copper_leggings":   "Exposed Copper Leggings",
-  "item.coppertools.exposed_copper_boots":      "Exposed Copper Boots",
-  
-  "item.coppertools.weathered_copper_shovel":  "Weathered Copper Shovel",
-  "item.coppertools.weathered_copper_pickaxe": "Weathered Copper Pickaxe",
-  "item.coppertools.weathered_copper_axe":     "Weathered Copper Axe",
-  "item.coppertools.weathered_copper_hoe":     "Weathered Copper Hoe",
-  "item.coppertools.weathered_copper_sword":   "Weathered Copper Sword",
-  
-  "item.coppertools.weathered_copper_helmet":     "Weathered Copper Helmet",
-  "item.coppertools.weathered_copper_chestplate": "Weathered Copper Chestplate",
-  "item.coppertools.weathered_copper_leggings":   "Weathered Copper Leggings",
-  "item.coppertools.weathered_copper_boots":      "Weathered Copper Boots",
-  
-  "item.coppertools.oxidized_copper_shovel":  "Oxidised Copper Shovel",
-  "item.coppertools.oxidized_copper_pickaxe": "Oxidised Copper Pickaxe",
-  "item.coppertools.oxidized_copper_axe":     "Oxidised Copper Axe",
-  "item.coppertools.oxidized_copper_hoe":     "Oxidised Copper Hoe",
-  "item.coppertools.oxidized_copper_sword":   "Oxidised Copper Sword",
-  
-  "item.coppertools.oxidized_copper_helmet":     "Oxidised Copper Helmet",
-  "item.coppertools.oxidized_copper_chestplate": "Oxidised Copper Chestplate",
-  "item.coppertools.oxidized_copper_leggings":   "Oxidised Copper Leggings",
-  "item.coppertools.oxidized_copper_boots":      "Oxidised Copper Boots",
-  
-  "item.coppertools.waxed_copper_shovel":  "Waxed Copper Shovel",
-  "item.coppertools.waxed_copper_pickaxe": "Waxed Copper Pickaxe",
-  "item.coppertools.waxed_copper_axe":     "Waxed Copper Axe",
-  "item.coppertools.waxed_copper_hoe":     "Waxed Copper Hoe",
-  "item.coppertools.waxed_copper_sword":   "Waxed Copper Sword",
-  
-  "item.coppertools.waxed_copper_helmet":     "Waxed Copper Helmet",
-  "item.coppertools.waxed_copper_chestplate": "Waxed Copper Chestplate",
-  "item.coppertools.waxed_copper_leggings":   "Waxed Copper Leggings",
-  "item.coppertools.waxed_copper_boots":      "Waxed Copper Boots",
-  
-  "item.coppertools.waxed_exposed_copper_shovel":  "Waxed Exposed Copper Shovel",
-  "item.coppertools.waxed_exposed_copper_pickaxe": "Waxed Exposed Copper Pickaxe",
-  "item.coppertools.waxed_exposed_copper_axe":     "Waxed Exposed Copper Axe",
-  "item.coppertools.waxed_exposed_copper_hoe":     "Waxed Exposed Copper Hoe",
-  "item.coppertools.waxed_exposed_copper_sword":   "Waxed Exposed Copper Sword",
-  
-  "item.coppertools.waxed_exposed_copper_helmet":     "Waxed Exposed Copper Helmet",
-  "item.coppertools.waxed_exposed_copper_chestplate": "Waxed Exposed Copper Chestplate",
-  "item.coppertools.waxed_exposed_copper_leggings":   "Waxed Exposed Copper Leggings",
-  "item.coppertools.waxed_exposed_copper_boots":      "Waxed Exposed Copper Boots",
-  
-  "item.coppertools.waxed_weathered_copper_shovel":  "Waxed Weathered Copper Shovel",
-  "item.coppertools.waxed_weathered_copper_pickaxe": "Waxed Weathered Copper Pickaxe",
-  "item.coppertools.waxed_weathered_copper_axe":     "Waxed Weathered Copper Axe",
-  "item.coppertools.waxed_weathered_copper_hoe":     "Waxed Weathered Copper Hoe",
-  "item.coppertools.waxed_weathered_copper_sword":   "Waxed Weathered Copper Sword",
-  
-  "item.coppertools.waxed_weathered_copper_helmet":     "Waxed Weathered Copper Helmet",
-  "item.coppertools.waxed_weathered_copper_chestplate": "Waxed Weathered Copper Chestplate",
-  "item.coppertools.waxed_weathered_copper_leggings":   "Waxed Weathered Copper Leggings",
-  "item.coppertools.waxed_weathered_copper_boots":      "Waxed Weathered Copper Boots",
-  
-  "item.coppertools.waxed_oxidized_copper_shovel":  "Waxed Oxidised Copper Shovel",
-  "item.coppertools.waxed_oxidized_copper_pickaxe": "Waxed Oxidised Copper Pickaxe",
-  "item.coppertools.waxed_oxidized_copper_axe":     "Waxed Oxidised Copper Axe",
-  "item.coppertools.waxed_oxidized_copper_hoe":     "Waxed Oxidised Copper Hoe",
-  "item.coppertools.waxed_oxidized_copper_sword":   "Waxed Oxidised Copper Sword",
-  
-  "item.coppertools.waxed_oxidized_copper_helmet":     "Waxed Oxidised Copper Helmet",
-  "item.coppertools.waxed_oxidized_copper_chestplate": "Waxed Oxidised Copper Chestplate",
-  "item.coppertools.waxed_oxidized_copper_leggings":   "Waxed Oxidised Copper Leggings",
-  "item.coppertools.waxed_oxidized_copper_boots":      "Waxed Oxidised Copper Boots"
+	"itemGroup.copper_tools": "Copper Tools",
+	
+	"item.coppertools.copper_shovel":  "Copper Shovel",
+	"item.coppertools.copper_pickaxe": "Copper Pickaxe",
+	"item.coppertools.copper_axe":     "Copper Axe",
+	"item.coppertools.copper_hoe":     "Copper Hoe",
+	"item.coppertools.copper_sword":   "Copper Sword",
+	
+	"item.coppertools.copper_helmet":     "Copper Helmet",
+	"item.coppertools.copper_chestplate": "Copper Chestplate",
+	"item.coppertools.copper_leggings":   "Copper Leggings",
+	"item.coppertools.copper_boots":      "Copper Boots",
+	
+	"item.coppertools.exposed_copper_shovel":  "Exposed Copper Shovel",
+	"item.coppertools.exposed_copper_pickaxe": "Exposed Copper Pickaxe",
+	"item.coppertools.exposed_copper_axe":     "Exposed Copper Axe",
+	"item.coppertools.exposed_copper_hoe":     "Exposed Copper Hoe",
+	"item.coppertools.exposed_copper_sword":   "Exposed Copper Sword",
+	
+	"item.coppertools.exposed_copper_helmet":     "Exposed Copper Helmet",
+	"item.coppertools.exposed_copper_chestplate": "Exposed Copper Chestplate",
+	"item.coppertools.exposed_copper_leggings":   "Exposed Copper Leggings",
+	"item.coppertools.exposed_copper_boots":      "Exposed Copper Boots",
+	
+	"item.coppertools.weathered_copper_shovel":  "Weathered Copper Shovel",
+	"item.coppertools.weathered_copper_pickaxe": "Weathered Copper Pickaxe",
+	"item.coppertools.weathered_copper_axe":     "Weathered Copper Axe",
+	"item.coppertools.weathered_copper_hoe":     "Weathered Copper Hoe",
+	"item.coppertools.weathered_copper_sword":   "Weathered Copper Sword",
+	
+	"item.coppertools.weathered_copper_helmet":     "Weathered Copper Helmet",
+	"item.coppertools.weathered_copper_chestplate": "Weathered Copper Chestplate",
+	"item.coppertools.weathered_copper_leggings":   "Weathered Copper Leggings",
+	"item.coppertools.weathered_copper_boots":      "Weathered Copper Boots",
+	
+	"item.coppertools.oxidized_copper_shovel":  "Oxidised Copper Shovel",
+	"item.coppertools.oxidized_copper_pickaxe": "Oxidised Copper Pickaxe",
+	"item.coppertools.oxidized_copper_axe":     "Oxidised Copper Axe",
+	"item.coppertools.oxidized_copper_hoe":     "Oxidised Copper Hoe",
+	"item.coppertools.oxidized_copper_sword":   "Oxidised Copper Sword",
+	
+	"item.coppertools.oxidized_copper_helmet":     "Oxidised Copper Helmet",
+	"item.coppertools.oxidized_copper_chestplate": "Oxidised Copper Chestplate",
+	"item.coppertools.oxidized_copper_leggings":   "Oxidised Copper Leggings",
+	"item.coppertools.oxidized_copper_boots":      "Oxidised Copper Boots",
+	
+	"item.coppertools.waxed_copper_shovel":  "Waxed Copper Shovel",
+	"item.coppertools.waxed_copper_pickaxe": "Waxed Copper Pickaxe",
+	"item.coppertools.waxed_copper_axe":     "Waxed Copper Axe",
+	"item.coppertools.waxed_copper_hoe":     "Waxed Copper Hoe",
+	"item.coppertools.waxed_copper_sword":   "Waxed Copper Sword",
+	
+	"item.coppertools.waxed_copper_helmet":     "Waxed Copper Helmet",
+	"item.coppertools.waxed_copper_chestplate": "Waxed Copper Chestplate",
+	"item.coppertools.waxed_copper_leggings":   "Waxed Copper Leggings",
+	"item.coppertools.waxed_copper_boots":      "Waxed Copper Boots",
+	
+	"item.coppertools.waxed_exposed_copper_shovel":  "Waxed Exposed Copper Shovel",
+	"item.coppertools.waxed_exposed_copper_pickaxe": "Waxed Exposed Copper Pickaxe",
+	"item.coppertools.waxed_exposed_copper_axe":     "Waxed Exposed Copper Axe",
+	"item.coppertools.waxed_exposed_copper_hoe":     "Waxed Exposed Copper Hoe",
+	"item.coppertools.waxed_exposed_copper_sword":   "Waxed Exposed Copper Sword",
+	
+	"item.coppertools.waxed_exposed_copper_helmet":     "Waxed Exposed Copper Helmet",
+	"item.coppertools.waxed_exposed_copper_chestplate": "Waxed Exposed Copper Chestplate",
+	"item.coppertools.waxed_exposed_copper_leggings":   "Waxed Exposed Copper Leggings",
+	"item.coppertools.waxed_exposed_copper_boots":      "Waxed Exposed Copper Boots",
+	
+	"item.coppertools.waxed_weathered_copper_shovel":  "Waxed Weathered Copper Shovel",
+	"item.coppertools.waxed_weathered_copper_pickaxe": "Waxed Weathered Copper Pickaxe",
+	"item.coppertools.waxed_weathered_copper_axe":     "Waxed Weathered Copper Axe",
+	"item.coppertools.waxed_weathered_copper_hoe":     "Waxed Weathered Copper Hoe",
+	"item.coppertools.waxed_weathered_copper_sword":   "Waxed Weathered Copper Sword",
+	
+	"item.coppertools.waxed_weathered_copper_helmet":     "Waxed Weathered Copper Helmet",
+	"item.coppertools.waxed_weathered_copper_chestplate": "Waxed Weathered Copper Chestplate",
+	"item.coppertools.waxed_weathered_copper_leggings":   "Waxed Weathered Copper Leggings",
+	"item.coppertools.waxed_weathered_copper_boots":      "Waxed Weathered Copper Boots",
+	
+	"item.coppertools.waxed_oxidized_copper_shovel":  "Waxed Oxidised Copper Shovel",
+	"item.coppertools.waxed_oxidized_copper_pickaxe": "Waxed Oxidised Copper Pickaxe",
+	"item.coppertools.waxed_oxidized_copper_axe":     "Waxed Oxidised Copper Axe",
+	"item.coppertools.waxed_oxidized_copper_hoe":     "Waxed Oxidised Copper Hoe",
+	"item.coppertools.waxed_oxidized_copper_sword":   "Waxed Oxidised Copper Sword",
+	
+	"item.coppertools.waxed_oxidized_copper_helmet":     "Waxed Oxidised Copper Helmet",
+	"item.coppertools.waxed_oxidized_copper_chestplate": "Waxed Oxidised Copper Chestplate",
+	"item.coppertools.waxed_oxidized_copper_leggings":   "Waxed Oxidised Copper Leggings",
+	"item.coppertools.waxed_oxidized_copper_boots":      "Waxed Oxidised Copper Boots"
 }

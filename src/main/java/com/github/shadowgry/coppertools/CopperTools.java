@@ -27,18 +27,18 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod(CopperTools.MOD_ID)
 public class CopperTools {
-    public static final String MOD_ID = "coppertools";
-    
-    public CopperTools() {
-        ModItems.registerItems();
-        MinecraftForge.EVENT_BUS.register(new OxidizeEventHandler());
-    }
-    
-    public static final CreativeModeTab TAB_COPPER_TOOLS = new CreativeModeTab("copper_tools") {
-        
-        @Override
-        public ItemStack makeIcon() {
-            return new ItemStack(ModItems.COPPER_AXE.get());
-        }
-    };
+	public static final String MOD_ID = "coppertools";
+	
+	public CopperTools() {
+		ModItems.registerItems();
+		MinecraftForge.EVENT_BUS.register(new OxidizeEventHandler());
+	}
+	
+	public static final CreativeModeTab TAB_COPPER_TOOLS = new CreativeModeTab("copper_tools") {
+		
+		@Override
+		public ItemStack makeIcon() {
+			return new ItemStack(ModItems.COPPER_AXE.get());
+		}
+	};
 }

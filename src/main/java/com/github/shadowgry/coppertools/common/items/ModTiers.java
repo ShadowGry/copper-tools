@@ -26,19 +26,19 @@ import net.minecraftforge.common.ForgeTier;
  * Provides custom tool tiers.
  */
 public class ModTiers {
-    public static final ForgeTier COPPER = new ForgeTier(2, 250, 6.0F, 2.0F, 14, BlockTags.NEEDS_IRON_TOOL, () -> {
-        return Ingredient.of(Items.COPPER_INGOT);
-    });
-    
-    public static final ForgeTier EXPOSED_COPPER = new ForgeTier(2, 200, 6.0F, 2.0F, 14, BlockTags.NEEDS_IRON_TOOL, () -> {
-        return Ingredient.of(Items.COPPER_INGOT);
-    });
-    
-    public static final ForgeTier WEATHERED_COPPER = new ForgeTier(2, 150, 6.0F, 2.0F, 14, BlockTags.NEEDS_IRON_TOOL, () -> {
-        return Ingredient.of(Items.COPPER_INGOT);
-    });
-    
-    public static final ForgeTier OXIDIZED_COPPER = new ForgeTier(2, 100, 6.0F, 2.0F, 14, BlockTags.NEEDS_IRON_TOOL, () -> {
-        return Ingredient.of(Items.COPPER_INGOT);
-    });
+	public static final ForgeTier COPPER = new ForgeTier(2, 250, 6.0F, 2.0F, 14, BlockTags.NEEDS_IRON_TOOL, () -> {
+		return Ingredient.of(Items.COPPER_INGOT);
+	});
+	
+	public static final ForgeTier EXPOSED_COPPER = new ForgeTier(2, 200, 6.0F, 2.0F, 14, BlockTags.NEEDS_IRON_TOOL, () -> {
+		return Ingredient.of(Items.COPPER_INGOT);
+	});
+	
+	public static final ForgeTier WEATHERED_COPPER = new ForgeTier(2, 150, 6.0F, 2.0F, 14, BlockTags.NEEDS_IRON_TOOL, () -> {
+		return Ingredient.of(Items.COPPER_INGOT);
+	});
+	
+	public static final ForgeTier OXIDIZED_COPPER = new ForgeTier(2, 100, 6.0F, 2.0F, 14, BlockTags.NEEDS_IRON_TOOL, () -> {
+		return Ingredient.of(Items.COPPER_INGOT);
+	});
 }
