@@ -1,6 +1,6 @@
 # Non-Mod-Specific Properties
 modLoader = "javafml"
-loaderVersion = "[41,)"
+loaderVersion = "[42,)"
 license = "GNU General Public License v3.0"
 issueTrackerURL = "https://github.com/ShadowGry/copper-tools/issues"
 
@@ -19,7 +19,7 @@ issueTrackerURL = "https://github.com/ShadowGry/copper-tools/issues"
 [[dependencies.coppertools]]
 	modId = "forge"
 	mandatory = true
-	versionRange = "[41,)"
+	versionRange = "[42,)"
 	ordering = "NONE"
 	side = "BOTH"
 
