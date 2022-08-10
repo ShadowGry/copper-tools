@@ -21,6 +21,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.github.shadowgry.coppertools.common.items.ModArmorMaterials;
 import com.github.shadowgry.coppertools.common.items.ModItems;
 import com.github.shadowgry.coppertools.common.items.ModTiers;
 import com.mojang.logging.LogUtils;
@@ -29,6 +30,8 @@ import org.slf4j.Logger;
 
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -47,19 +50,24 @@ public class OxidizeEventHandler {
     public static final Logger LOGGER = LogUtils.getLogger();
     
     /**
-     * Flag to denote if copper tool oxidization order has been specified.
+     * Flag to denote if copper tool and armor oxidization orders have been specified.
      */
-    private boolean isMapInitialized;
+    private boolean mapsInitialized;
     
     /**
      * Stores data to appropriately oxidize copper tools.
      */
-    private Map<Item, OxidizeData> oxidizeData;
+    private Map<Item, OxidizeData> toolOxidizeData;
+    
+    /**
+     * Stores data to appropriately oxidize copper armor.
+     */
+    private Map<Item, OxidizeData> armorOxidizeData;
     
     /**
      * The damage value required before the tool oxidizes to the next stage.
      */
-    private final int[] OXIDIZE_DAMAGE = new int[] {
+    private final int[] OXIDIZE_DAMAGE_TOOL = new int[] {
         ModTiers.COPPER.getUses() / 4,
         ModTiers.EXPOSED_COPPER.getUses() * 1/2,
         ModTiers.WEATHERED_COPPER.getUses() * 3/4
@@ -68,24 +76,73 @@ public class OxidizeEventHandler {
     /**
      * The initial damage of the next oxidized tool.
      */
-    private final int[] START_DAMAGE = new int[] {
+    private final int[] START_DAMAGE_TOOL = new int[] {
         ModTiers.EXPOSED_COPPER.getUses() / 4,
         ModTiers.WEATHERED_COPPER.getUses() * 1/2,
         ModTiers.OXIDIZED_COPPER.getUses() * 3/4
     };
     
+    /**
+     * The damage value required before the armor oxidises to the next stage. First dimension is the armor material, the
+     * second dimension is the equipment slot.
+     */
+    private final int[][] OXIDIZE_DAMAGE_ARMOR = new int [][] {
+        {
+            ModArmorMaterials.COPPER.getDurabilityForSlot(EquipmentSlot.HEAD) / 4,
+            ModArmorMaterials.COPPER.getDurabilityForSlot(EquipmentSlot.CHEST) / 4,
+            ModArmorMaterials.COPPER.getDurabilityForSlot(EquipmentSlot.LEGS) / 4,
+            ModArmorMaterials.COPPER.getDurabilityForSlot(EquipmentSlot.FEET) / 4
+        },
+        {
+            ModArmorMaterials.EXPOSED_COPPER.getDurabilityForSlot(EquipmentSlot.HEAD) * 1/2,
+            ModArmorMaterials.EXPOSED_COPPER.getDurabilityForSlot(EquipmentSlot.CHEST) * 1/2,
+            ModArmorMaterials.EXPOSED_COPPER.getDurabilityForSlot(EquipmentSlot.LEGS) * 1/2,
+            ModArmorMaterials.EXPOSED_COPPER.getDurabilityForSlot(EquipmentSlot.FEET) * 1/2
+        },
+        {
+            ModArmorMaterials.WEATHERED_COPPER.getDurabilityForSlot(EquipmentSlot.HEAD) * 3/4,
+            ModArmorMaterials.WEATHERED_COPPER.getDurabilityForSlot(EquipmentSlot.CHEST) * 3/4,
+            ModArmorMaterials.WEATHERED_COPPER.getDurabilityForSlot(EquipmentSlot.LEGS) * 3/4,
+            ModArmorMaterials.WEATHERED_COPPER.getDurabilityForSlot(EquipmentSlot.FEET) * 3/4
+        }
+    };
+    
+    private final int[][] START_DAMAGE_ARMOR = new int [][] {
+        {
+            ModArmorMaterials.EXPOSED_COPPER.getDurabilityForSlot(EquipmentSlot.HEAD) / 4,
+            ModArmorMaterials.EXPOSED_COPPER.getDurabilityForSlot(EquipmentSlot.CHEST) / 4,
+            ModArmorMaterials.EXPOSED_COPPER.getDurabilityForSlot(EquipmentSlot.LEGS) / 4,
+            ModArmorMaterials.EXPOSED_COPPER.getDurabilityForSlot(EquipmentSlot.FEET) / 4
+        },
+        {
+            ModArmorMaterials.WEATHERED_COPPER.getDurabilityForSlot(EquipmentSlot.HEAD) * 1/2,
+            ModArmorMaterials.WEATHERED_COPPER.getDurabilityForSlot(EquipmentSlot.CHEST) * 1/2,
+            ModArmorMaterials.WEATHERED_COPPER.getDurabilityForSlot(EquipmentSlot.LEGS) * 1/2,
+            ModArmorMaterials.WEATHERED_COPPER.getDurabilityForSlot(EquipmentSlot.FEET) * 1/2
+        },
+        {
+            ModArmorMaterials.OXIDIZED_COPPER.getDurabilityForSlot(EquipmentSlot.HEAD) * 3/4,
+            ModArmorMaterials.OXIDIZED_COPPER.getDurabilityForSlot(EquipmentSlot.CHEST) * 3/4,
+            ModArmorMaterials.OXIDIZED_COPPER.getDurabilityForSlot(EquipmentSlot.LEGS) * 3/4,
+            ModArmorMaterials.OXIDIZED_COPPER.getDurabilityForSlot(EquipmentSlot.FEET) * 3/4
+        }
+    };
+    
+    List<EquipmentSlot> EQUIPMENT_SLOTS = List.of(EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET);
+    
     public OxidizeEventHandler() {
-        isMapInitialized  = false;
-        oxidizeData = null;
+        mapsInitialized = false;
+        toolOxidizeData = null;
+        armorOxidizeData = null;
     }
     
     /**
-     * Puts the copper tool oxidization orderings into a map, for quick future lookup. Sets {@code isMapInitialized} to
-     * true, as this only needs to be run once.
+     * Puts the copper tool and armor oxidization orderings into a map, for quick future lookup. Sets
+     * {@code mapsInitialized} to true, as this only needs to be run once.
      * 
-     * TODO: Run earlier during mod loading, rather than on first BreakEvent. 
+     * TODO: Run earlier during mod loading, rather than on first relevant event. 
      */
-    private void initializeMap() {
+    private void initializeMaps() {
         List< List<RegistryObject<?>> > copper_tools = List.of(
             List.of(ModItems.COPPER_SHOVEL, ModItems.EXPOSED_COPPER_SHOVEL, ModItems.WEATHERED_COPPER_SHOVEL, ModItems.OXIDIZED_COPPER_SHOVEL),
             List.of(ModItems.COPPER_PICKAXE, ModItems.EXPOSED_COPPER_PICKAXE, ModItems.WEATHERED_COPPER_PICKAXE, ModItems.OXIDIZED_COPPER_PICKAXE),
@@ -94,18 +151,43 @@ public class OxidizeEventHandler {
             List.of(ModItems.COPPER_SWORD, ModItems.EXPOSED_COPPER_SWORD, ModItems.WEATHERED_COPPER_SWORD, ModItems.OXIDIZED_COPPER_SWORD)
         );
         
-        oxidizeData = new HashMap<>();
+        List< List<RegistryObject<?>> > copper_armor = List.of(
+            List.of(ModItems.COPPER_HELMET, ModItems.EXPOSED_COPPER_HELMET, ModItems.WEATHERED_COPPER_HELMET, ModItems.OXIDIZED_COPPER_HELMET),
+            List.of(ModItems.COPPER_CHESTPLATE, ModItems.EXPOSED_COPPER_CHESTPLATE, ModItems.WEATHERED_COPPER_CHESTPLATE, ModItems.OXIDIZED_COPPER_CHESTPLATE),
+            List.of(ModItems.COPPER_LEGGINGS, ModItems.EXPOSED_COPPER_LEGGINGS, ModItems.WEATHERED_COPPER_LEGGINGS, ModItems.OXIDIZED_COPPER_LEGGINGS),
+            List.of(ModItems.COPPER_BOOTS, ModItems.EXPOSED_COPPER_BOOTS, ModItems.WEATHERED_COPPER_BOOTS, ModItems.OXIDIZED_COPPER_BOOTS)
+        );
+        
+        toolOxidizeData = new HashMap<>();
         for(List<RegistryObject<?>> tool_set : copper_tools) {
-            addOxidizeData(tool_set);
+            addToolOxidizeData(tool_set);
         }
-        isMapInitialized = true;
+        
+        createArmorOxidizeData(copper_armor);
+        
+        mapsInitialized = true;
     }
     
-    private void addOxidizeData(List<RegistryObject<?>> items) {
+    private void addToolOxidizeData(List<RegistryObject<?>> items) {
         int size = items.size() - 1;
         for(int i = 0; i < size; i++) {
-            oxidizeData.put(((Item) items.get(i).get()).asItem(),
-                            new OxidizeData((Item) items.get(i+1).get(), OXIDIZE_DAMAGE[i], START_DAMAGE[i]));
+            toolOxidizeData.put(((Item) items.get(i).get()).asItem(),
+                            new OxidizeData((Item) items.get(i+1).get(), OXIDIZE_DAMAGE_TOOL[i], START_DAMAGE_TOOL[i]));
+        }
+    }
+    
+    private void createArmorOxidizeData(List< List<RegistryObject<?>> > items) {
+        armorOxidizeData = new HashMap<>();
+        int equipmentSlot = 0;
+        
+        for(List<RegistryObject<?>> armor_set : items) {
+            int size = armor_set.size() - 1;
+            
+            for(int i = 0; i < size; i++) {
+                armorOxidizeData.put(((Item) armor_set.get(i).get()).asItem(),
+                                    new OxidizeData((Item) armor_set.get(i+1).get(), OXIDIZE_DAMAGE_ARMOR[i][equipmentSlot], START_DAMAGE_ARMOR[i][equipmentSlot]));
+            }
+            equipmentSlot++;
         }
     }
     
@@ -152,13 +234,13 @@ public class OxidizeEventHandler {
      * @param player the player where an oxidization may occur.
      */
     private void oxidizeTool(Player player) {
-        if(!isMapInitialized) {
-            initializeMap();
+        if(!mapsInitialized) {
+            initializeMaps();
         }
         
         if(!player.isCreative()) {
             ItemStack item = player.getMainHandItem();
-            OxidizeData data = oxidizeData.get(item.getItem());
+            OxidizeData data = toolOxidizeData.get(item.getItem());
             
             if(data != null && item.getDamageValue() > data.getOxidizeDamageValue()) {
                 ItemStack nextTool = data.getNextTool().getDefaultInstance();
@@ -187,6 +269,37 @@ public class OxidizeEventHandler {
         }
         if(oldItem.isRepairable() && newItem.isRepairable()) {
             newItem.setRepairCost(oldItem.getBaseRepairCost());
+        }
+    }
+    
+    /**
+     * Oxidises copper armor to the next stage when they are damaged enough from taking damage.
+     * TODO: Improve documentation for this method.
+     * 
+     * @param event the LivingDamageEvent.
+     */
+    @SubscribeEvent
+    public void oxidizeArmor(LivingDamageEvent event) {
+        if(!mapsInitialized) {
+            initializeMaps();
+        }
+        
+        LivingEntity hurtEntity = event.getEntity();
+        if(!hurtEntity.level.isClientSide()) {
+            
+            for(EquipmentSlot equipmentSlot : EQUIPMENT_SLOTS) {
+                if(hurtEntity.hasItemInSlot(equipmentSlot)) {
+                    ItemStack item = hurtEntity.getItemBySlot(equipmentSlot);
+                    OxidizeData data = armorOxidizeData.get(item.getItem());
+                    
+                    if(data != null && item.getDamageValue() > data.getOxidizeDamageValue()) {
+                        ItemStack nextItem = data.getNextTool().getDefaultInstance();
+                        copyModifications(item, nextItem);
+                        nextItem.setDamageValue(data.getStartDamageValue());
+                        hurtEntity.setItemSlot(equipmentSlot, nextItem);
+                    }
+                }
+            }
         }
     }
     
