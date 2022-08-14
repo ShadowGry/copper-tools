@@ -15,15 +15,15 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package com.github.shadowgry.coppertools.common.events;
+package io.github.shadowgry.coppertools.common.events;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.github.shadowgry.coppertools.common.items.ModArmorMaterials;
-import com.github.shadowgry.coppertools.common.items.ModItems;
-import com.github.shadowgry.coppertools.common.items.ModTiers;
+import io.github.shadowgry.coppertools.common.items.ModArmorMaterials;
+import io.github.shadowgry.coppertools.common.items.ModItems;
+import io.github.shadowgry.coppertools.common.items.ModTiers;
 import com.mojang.logging.LogUtils;
 
 import org.slf4j.Logger;

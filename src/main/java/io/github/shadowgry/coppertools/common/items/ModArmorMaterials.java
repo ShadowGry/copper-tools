@@ -15,11 +15,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package com.github.shadowgry.coppertools.common.items;
+package io.github.shadowgry.coppertools.common.items;
 
 import java.util.function.Supplier;
 
-import com.github.shadowgry.coppertools.CopperTools;
+import io.github.shadowgry.coppertools.CopperTools;
 
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;

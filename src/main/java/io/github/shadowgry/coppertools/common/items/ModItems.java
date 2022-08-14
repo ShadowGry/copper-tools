@@ -15,9 +15,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package com.github.shadowgry.coppertools.common.items;
+package io.github.shadowgry.coppertools.common.items;
 
-import com.github.shadowgry.coppertools.CopperTools;
+import io.github.shadowgry.coppertools.CopperTools;
 
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ArmorItem;

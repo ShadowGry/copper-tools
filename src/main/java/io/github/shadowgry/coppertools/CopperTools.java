@@ -15,10 +15,10 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-package com.github.shadowgry.coppertools;
+package io.github.shadowgry.coppertools;
 
-import com.github.shadowgry.coppertools.common.events.OxidizeEventHandler;
-import com.github.shadowgry.coppertools.common.items.ModItems;
+import io.github.shadowgry.coppertools.common.events.OxidizeEventHandler;
+import io.github.shadowgry.coppertools.common.items.ModItems;
 
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
