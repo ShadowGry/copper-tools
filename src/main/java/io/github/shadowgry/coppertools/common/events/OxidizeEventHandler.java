@@ -243,7 +243,7 @@ public class OxidizeEventHandler {
 			OxidizeData data = toolOxidizeData.get(item.getItem());
 			
 			if(data != null && item.getDamageValue() > data.getOxidizeDamageValue()) {
-				ItemStack nextTool = data.getNextTool().getDefaultInstance();
+				ItemStack nextTool = data.getNextTool();
 				copyModifications(item, nextTool);
 				nextTool.setDamageValue(data.getStartDamageValue());
 				player.setItemInHand(InteractionHand.MAIN_HAND, nextTool);
@@ -293,7 +293,7 @@ public class OxidizeEventHandler {
 					OxidizeData data = armorOxidizeData.get(item.getItem());
 					
 					if(data != null && item.getDamageValue() > data.getOxidizeDamageValue()) {
-						ItemStack nextItem = data.getNextTool().getDefaultInstance();
+						ItemStack nextItem = data.getNextTool();
 						copyModifications(item, nextItem);
 						nextItem.setDamageValue(data.getStartDamageValue());
 						hurtEntity.setItemSlot(equipmentSlot, nextItem);
@@ -331,8 +331,8 @@ public class OxidizeEventHandler {
 		 * 
 		 * @return the next tool the old one turns into.
 		 */
-		Item getNextTool() {
-			return this.nextTool;
+		ItemStack getNextTool() {
+			return this.nextTool.getDefaultInstance();
 		}
 		
 		/**
