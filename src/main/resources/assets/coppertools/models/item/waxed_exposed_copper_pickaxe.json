@@ -1,6 +1,6 @@
 {
 	"parent": "item/handheld",
 	"textures": {
-		"layer0": "coppertools:items/exposed_copper_pickaxe"
+		"layer0": "coppertools:item/exposed_copper_pickaxe"
 	}
 }

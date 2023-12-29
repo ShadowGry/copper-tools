@@ -1,6 +1,6 @@
 {
 	"parent": "item/generated",
 	"textures": {
-		"layer0": "coppertools:items/weathered_copper_leggings"
+		"layer0": "coppertools:item/weathered_copper_leggings"
 	}
 }

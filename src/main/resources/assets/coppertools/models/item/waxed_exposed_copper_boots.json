@@ -1,6 +1,6 @@
 {
 	"parent": "item/generated",
 	"textures": {
-		"layer0": "coppertools:items/exposed_copper_boots"
+		"layer0": "coppertools:item/exposed_copper_boots"
 	}
 }
