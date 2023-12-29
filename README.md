@@ -1,5 +1,5 @@
 # Copper Tools
-![Version](https://img.shields.io/badge/version-1.19.1--0.0.0.2-blue?style=flat-square)
+![Version](https://img.shields.io/badge/version-1.19.3--0.0.0.2-blue?style=flat-square)
 ![GitHub](https://img.shields.io/github/license/ShadowGry/copper-tools?style=flat-square)
 
 A Minecraft mod that adds copper tools and armor using Minecraft Forge.
