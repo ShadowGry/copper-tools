@@ -197,7 +197,7 @@ public class OxidizeEventHandler {
 	 */
 	@SubscribeEvent
 	public void onBreakEvent(BlockEvent.BreakEvent event) {
-		if(!event.getPlayer().level.isClientSide()) {
+		if(!event.getPlayer().level().isClientSide()) {
 			Player player = event.getPlayer();
 			oxidizeTool(player);
 		}
@@ -208,7 +208,7 @@ public class OxidizeEventHandler {
 	 */
 	@SubscribeEvent
 	public void onToolModificationEvent(BlockEvent.BlockToolModificationEvent event) {
-		if(!event.getPlayer().level.isClientSide()) {
+		if(!event.getPlayer().level().isClientSide()) {
 			Player player = event.getPlayer();
 			oxidizeTool(player);
 		}
@@ -221,7 +221,7 @@ public class OxidizeEventHandler {
 	 */
 	@SubscribeEvent
 	public void onLivingDamageEvent(LivingDamageEvent event) {
-		if(!event.getEntity().level.isClientSide()) {
+		if(!event.getEntity().level().isClientSide()) {
 			Entity entity = event.getSource().getDirectEntity();
 			if(entity instanceof Player) {
 				oxidizeTool((Player) entity);
@@ -286,7 +286,7 @@ public class OxidizeEventHandler {
 		}
 		
 		LivingEntity hurtEntity = event.getEntity();
-		if(!hurtEntity.level.isClientSide()) {
+		if(!hurtEntity.level().isClientSide()) {
 			
 			for(EquipmentSlot equipmentSlot : EQUIPMENT_SLOTS) {
 				if(hurtEntity.hasItemInSlot(equipmentSlot)) {

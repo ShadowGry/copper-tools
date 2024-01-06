@@ -18,7 +18,7 @@
 package io.github.shadowgry.coppertools;
 
 import io.github.shadowgry.coppertools.common.events.OxidizeEventHandler;
-import io.github.shadowgry.coppertools.common.items.ModCreativeTabs;
+import io.github.shadowgry.coppertools.common.items.ModCreativeModeTabs;
 import io.github.shadowgry.coppertools.common.items.ModItems;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
@@ -29,7 +29,7 @@ public class CopperTools {
 	
 	public CopperTools() {
 		ModItems.registerItems();
-		MinecraftForge.EVENT_BUS.register(ModCreativeTabs.class);
+		ModCreativeModeTabs.register();
 		MinecraftForge.EVENT_BUS.register(new OxidizeEventHandler());
 	}
 }
