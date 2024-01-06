@@ -33,6 +33,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -88,43 +89,43 @@ public class OxidizeEventHandler {
 	 */
 	private final int[][] OXIDIZE_DAMAGE_ARMOR = new int [][] {
 		{
-			ModArmorMaterials.COPPER.getDurabilityForSlot(EquipmentSlot.HEAD) / 4,
-			ModArmorMaterials.COPPER.getDurabilityForSlot(EquipmentSlot.CHEST) / 4,
-			ModArmorMaterials.COPPER.getDurabilityForSlot(EquipmentSlot.LEGS) / 4,
-			ModArmorMaterials.COPPER.getDurabilityForSlot(EquipmentSlot.FEET) / 4
+			ModArmorMaterials.COPPER.getDurabilityForType(ArmorItem.Type.HELMET) / 4,
+			ModArmorMaterials.COPPER.getDurabilityForType(ArmorItem.Type.CHESTPLATE) / 4,
+			ModArmorMaterials.COPPER.getDurabilityForType(ArmorItem.Type.LEGGINGS) / 4,
+			ModArmorMaterials.COPPER.getDurabilityForType(ArmorItem.Type.BOOTS) / 4
 		},
 		{
-			ModArmorMaterials.EXPOSED_COPPER.getDurabilityForSlot(EquipmentSlot.HEAD) * 1/2,
-			ModArmorMaterials.EXPOSED_COPPER.getDurabilityForSlot(EquipmentSlot.CHEST) * 1/2,
-			ModArmorMaterials.EXPOSED_COPPER.getDurabilityForSlot(EquipmentSlot.LEGS) * 1/2,
-			ModArmorMaterials.EXPOSED_COPPER.getDurabilityForSlot(EquipmentSlot.FEET) * 1/2
+			ModArmorMaterials.EXPOSED_COPPER.getDurabilityForType(ArmorItem.Type.HELMET) * 1/2,
+			ModArmorMaterials.EXPOSED_COPPER.getDurabilityForType(ArmorItem.Type.CHESTPLATE) * 1/2,
+			ModArmorMaterials.EXPOSED_COPPER.getDurabilityForType(ArmorItem.Type.LEGGINGS) * 1/2,
+			ModArmorMaterials.EXPOSED_COPPER.getDurabilityForType(ArmorItem.Type.BOOTS) * 1/2
 		},
 		{
-			ModArmorMaterials.WEATHERED_COPPER.getDurabilityForSlot(EquipmentSlot.HEAD) * 3/4,
-			ModArmorMaterials.WEATHERED_COPPER.getDurabilityForSlot(EquipmentSlot.CHEST) * 3/4,
-			ModArmorMaterials.WEATHERED_COPPER.getDurabilityForSlot(EquipmentSlot.LEGS) * 3/4,
-			ModArmorMaterials.WEATHERED_COPPER.getDurabilityForSlot(EquipmentSlot.FEET) * 3/4
+			ModArmorMaterials.WEATHERED_COPPER.getDurabilityForType(ArmorItem.Type.HELMET) * 3/4,
+			ModArmorMaterials.WEATHERED_COPPER.getDurabilityForType(ArmorItem.Type.CHESTPLATE) * 3/4,
+			ModArmorMaterials.WEATHERED_COPPER.getDurabilityForType(ArmorItem.Type.LEGGINGS) * 3/4,
+			ModArmorMaterials.WEATHERED_COPPER.getDurabilityForType(ArmorItem.Type.BOOTS) * 3/4
 		}
 	};
 	
 	private final int[][] START_DAMAGE_ARMOR = new int [][] {
 		{
-			ModArmorMaterials.EXPOSED_COPPER.getDurabilityForSlot(EquipmentSlot.HEAD) / 4,
-			ModArmorMaterials.EXPOSED_COPPER.getDurabilityForSlot(EquipmentSlot.CHEST) / 4,
-			ModArmorMaterials.EXPOSED_COPPER.getDurabilityForSlot(EquipmentSlot.LEGS) / 4,
-			ModArmorMaterials.EXPOSED_COPPER.getDurabilityForSlot(EquipmentSlot.FEET) / 4
+			ModArmorMaterials.EXPOSED_COPPER.getDurabilityForType(ArmorItem.Type.HELMET) / 4,
+			ModArmorMaterials.EXPOSED_COPPER.getDurabilityForType(ArmorItem.Type.CHESTPLATE) / 4,
+			ModArmorMaterials.EXPOSED_COPPER.getDurabilityForType(ArmorItem.Type.LEGGINGS) / 4,
+			ModArmorMaterials.EXPOSED_COPPER.getDurabilityForType(ArmorItem.Type.BOOTS) / 4
 		},
 		{
-			ModArmorMaterials.WEATHERED_COPPER.getDurabilityForSlot(EquipmentSlot.HEAD) * 1/2,
-			ModArmorMaterials.WEATHERED_COPPER.getDurabilityForSlot(EquipmentSlot.CHEST) * 1/2,
-			ModArmorMaterials.WEATHERED_COPPER.getDurabilityForSlot(EquipmentSlot.LEGS) * 1/2,
-			ModArmorMaterials.WEATHERED_COPPER.getDurabilityForSlot(EquipmentSlot.FEET) * 1/2
+			ModArmorMaterials.WEATHERED_COPPER.getDurabilityForType(ArmorItem.Type.HELMET) * 1/2,
+			ModArmorMaterials.WEATHERED_COPPER.getDurabilityForType(ArmorItem.Type.CHESTPLATE) * 1/2,
+			ModArmorMaterials.WEATHERED_COPPER.getDurabilityForType(ArmorItem.Type.LEGGINGS) * 1/2,
+			ModArmorMaterials.WEATHERED_COPPER.getDurabilityForType(ArmorItem.Type.BOOTS) * 1/2
 		},
 		{
-			ModArmorMaterials.OXIDIZED_COPPER.getDurabilityForSlot(EquipmentSlot.HEAD) * 3/4,
-			ModArmorMaterials.OXIDIZED_COPPER.getDurabilityForSlot(EquipmentSlot.CHEST) * 3/4,
-			ModArmorMaterials.OXIDIZED_COPPER.getDurabilityForSlot(EquipmentSlot.LEGS) * 3/4,
-			ModArmorMaterials.OXIDIZED_COPPER.getDurabilityForSlot(EquipmentSlot.FEET) * 3/4
+			ModArmorMaterials.OXIDIZED_COPPER.getDurabilityForType(ArmorItem.Type.HELMET) * 3/4,
+			ModArmorMaterials.OXIDIZED_COPPER.getDurabilityForType(ArmorItem.Type.CHESTPLATE) * 3/4,
+			ModArmorMaterials.OXIDIZED_COPPER.getDurabilityForType(ArmorItem.Type.LEGGINGS) * 3/4,
+			ModArmorMaterials.OXIDIZED_COPPER.getDurabilityForType(ArmorItem.Type.BOOTS) * 3/4
 		}
 	};
 	
