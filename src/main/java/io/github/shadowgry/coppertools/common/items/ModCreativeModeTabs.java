@@ -22,15 +22,15 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class ModCreativeModeTabs {
 
 	private static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, CopperTools.MOD_ID);
 
-	public static final RegistryObject<CreativeModeTab> COPPER_TOOLS = CREATIVE_MODE_TABS.register("coppertools", () -> CreativeModeTab.builder()
+	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> COPPER_TOOLS = CREATIVE_MODE_TABS.register("coppertools", () -> CreativeModeTab.builder()
 		.title(Component.translatable("item_group." + CopperTools.MOD_ID + ".copper_tools"))
 		.icon(() -> new ItemStack(ModItems.COPPER_PICKAXE.get()))
 		.displayItems((params, output) -> {
@@ -81,7 +81,7 @@ public class ModCreativeModeTabs {
 		.build()
 	);
 
-	public static void register() {
-		CREATIVE_MODE_TABS.register(FMLJavaModLoadingContext.get().getModEventBus());
+	public static void register(IEventBus modEventBus) {
+		CREATIVE_MODE_TABS.register(modEventBus);
 	}
 }

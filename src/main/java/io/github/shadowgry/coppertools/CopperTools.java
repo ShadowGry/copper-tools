@@ -20,16 +20,17 @@ package io.github.shadowgry.coppertools;
 import io.github.shadowgry.coppertools.common.events.OxidizeEventHandler;
 import io.github.shadowgry.coppertools.common.items.ModCreativeModeTabs;
 import io.github.shadowgry.coppertools.common.items.ModItems;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.common.NeoForge;
 
 @Mod(CopperTools.MOD_ID)
 public class CopperTools {
 	public static final String MOD_ID = "coppertools";
 	
-	public CopperTools() {
-		ModItems.registerItems();
-		ModCreativeModeTabs.register();
-		MinecraftForge.EVENT_BUS.register(new OxidizeEventHandler());
+	public CopperTools(IEventBus modEventBus) {
+		ModItems.register(modEventBus);
+		ModCreativeModeTabs.register(modEventBus);
+		NeoForge.EVENT_BUS.register(new OxidizeEventHandler());
 	}
 }
