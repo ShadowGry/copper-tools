@@ -19,26 +19,51 @@ package io.github.shadowgry.coppertools.common.items;
 
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraftforge.common.ForgeTier;
+import net.neoforged.neoforge.common.SimpleTier;
 
 /**
  * Provides custom tool tiers.
  */
 public class ModTiers {
-	public static final ForgeTier COPPER = new ForgeTier(2, 250, 6.0F, 2.0F, 14, BlockTags.NEEDS_IRON_TOOL, () -> {
-		return Ingredient.of(Items.COPPER_INGOT);
-	});
+	public static final Tier COPPER = new SimpleTier(
+		2,
+		250,
+		6.0F,
+		2.0F,
+		14,
+		BlockTags.NEEDS_IRON_TOOL,
+		() -> Ingredient.of(Items.IRON_PICKAXE)
+	);
 	
-	public static final ForgeTier EXPOSED_COPPER = new ForgeTier(2, 200, 6.0F, 2.0F, 14, BlockTags.NEEDS_IRON_TOOL, () -> {
-		return Ingredient.of(Items.COPPER_INGOT);
-	});
+	public static final Tier EXPOSED_COPPER = new SimpleTier(
+		2,
+		200,
+		6.0F,
+		2.0F,
+		14,
+		BlockTags.NEEDS_IRON_TOOL,
+		() -> Ingredient.of(Items.COPPER_INGOT)
+	);
 	
-	public static final ForgeTier WEATHERED_COPPER = new ForgeTier(2, 150, 6.0F, 2.0F, 14, BlockTags.NEEDS_IRON_TOOL, () -> {
-		return Ingredient.of(Items.COPPER_INGOT);
-	});
+	public static final Tier WEATHERED_COPPER = new SimpleTier(
+		2,
+		150,
+		6.0F,
+		2.0F,
+		14,
+		BlockTags.NEEDS_IRON_TOOL,
+		() -> Ingredient.of(Items.COPPER_INGOT)
+	);
 	
-	public static final ForgeTier OXIDIZED_COPPER = new ForgeTier(2, 100, 6.0F, 2.0F, 14, BlockTags.NEEDS_IRON_TOOL, () -> {
-		return Ingredient.of(Items.COPPER_INGOT);
-	});
+	public static final Tier OXIDIZED_COPPER = new SimpleTier(
+		2,
+		100,
+		6.0F,
+		2.0F,
+		14,
+		BlockTags.NEEDS_IRON_TOOL,
+		() -> Ingredient.of(Items.COPPER_INGOT)
+	);
 }

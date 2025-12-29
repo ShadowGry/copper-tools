@@ -26,6 +26,7 @@ import io.github.shadowgry.coppertools.common.items.ModItems;
 import io.github.shadowgry.coppertools.common.items.ModTiers;
 import com.mojang.logging.LogUtils;
 
+import net.neoforged.neoforge.registries.DeferredItem;
 import org.slf4j.Logger;
 
 import net.minecraft.world.InteractionHand;
@@ -38,10 +39,9 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraftforge.event.entity.living.LivingDamageEvent;
-import net.minecraftforge.event.level.BlockEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
+import net.neoforged.neoforge.event.level.BlockEvent;
+import net.neoforged.bus.api.SubscribeEvent;
 
 /**
  * Implements copper tool oxidizations.
@@ -144,7 +144,7 @@ public class OxidizeEventHandler {
 	 * TODO: Run earlier during mod loading, rather than on first relevant event.
 	 */
 	private void initializeMaps() {
-		List< List<RegistryObject<?>> > copper_tools = List.of(
+		List< List<DeferredItem<?>> > copper_tools = List.of(
 			List.of(ModItems.COPPER_SHOVEL, ModItems.EXPOSED_COPPER_SHOVEL, ModItems.WEATHERED_COPPER_SHOVEL, ModItems.OXIDIZED_COPPER_SHOVEL),
 			List.of(ModItems.COPPER_PICKAXE, ModItems.EXPOSED_COPPER_PICKAXE, ModItems.WEATHERED_COPPER_PICKAXE, ModItems.OXIDIZED_COPPER_PICKAXE),
 			List.of(ModItems.COPPER_AXE, ModItems.EXPOSED_COPPER_AXE, ModItems.WEATHERED_COPPER_AXE, ModItems.OXIDIZED_COPPER_AXE),
@@ -152,7 +152,7 @@ public class OxidizeEventHandler {
 			List.of(ModItems.COPPER_SWORD, ModItems.EXPOSED_COPPER_SWORD, ModItems.WEATHERED_COPPER_SWORD, ModItems.OXIDIZED_COPPER_SWORD)
 		);
 		
-		List< List<RegistryObject<?>> > copper_armor = List.of(
+		List< List<DeferredItem<?>> > copper_armor = List.of(
 			List.of(ModItems.COPPER_HELMET, ModItems.EXPOSED_COPPER_HELMET, ModItems.WEATHERED_COPPER_HELMET, ModItems.OXIDIZED_COPPER_HELMET),
 			List.of(ModItems.COPPER_CHESTPLATE, ModItems.EXPOSED_COPPER_CHESTPLATE, ModItems.WEATHERED_COPPER_CHESTPLATE, ModItems.OXIDIZED_COPPER_CHESTPLATE),
 			List.of(ModItems.COPPER_LEGGINGS, ModItems.EXPOSED_COPPER_LEGGINGS, ModItems.WEATHERED_COPPER_LEGGINGS, ModItems.OXIDIZED_COPPER_LEGGINGS),
@@ -160,7 +160,7 @@ public class OxidizeEventHandler {
 		);
 		
 		toolOxidizeData = new HashMap<>();
-		for(List<RegistryObject<?>> tool_set : copper_tools) {
+		for(List<DeferredItem<?>> tool_set : copper_tools) {
 			addToolOxidizeData(tool_set);
 		}
 		
@@ -169,7 +169,7 @@ public class OxidizeEventHandler {
 		mapsInitialized = true;
 	}
 	
-	private void addToolOxidizeData(List<RegistryObject<?>> items) {
+	private void addToolOxidizeData(List<DeferredItem<?>> items) {
 		int size = items.size() - 1;
 		for(int i = 0; i < size; i++) {
 			toolOxidizeData.put(((Item) items.get(i).get()).asItem(),
@@ -177,11 +177,11 @@ public class OxidizeEventHandler {
 		}
 	}
 	
-	private void createArmorOxidizeData(List< List<RegistryObject<?>> > items) {
+	private void createArmorOxidizeData(List< List<DeferredItem<?>> > items) {
 		armorOxidizeData = new HashMap<>();
 		int equipmentSlot = 0;
 		
-		for(List<RegistryObject<?>> armor_set : items) {
+		for(List<DeferredItem<?>> armor_set : items) {
 			int size = armor_set.size() - 1;
 			
 			for(int i = 0; i < size; i++) {

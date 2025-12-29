@@ -36,33 +36,33 @@ public enum ModArmorMaterials implements ArmorMaterial {
 		type.put(ArmorItem.Type.LEGGINGS, 5);
 		type.put(ArmorItem.Type.CHESTPLATE, 6);
 		type.put(ArmorItem.Type.HELMET, 2);
-	}), 12, SoundEvents.ARMOR_EQUIP_IRON, 1.0F, 0.0F, () -> {
-		return Ingredient.of(Items.COPPER_INGOT);
-	}),
+	}), 12, SoundEvents.ARMOR_EQUIP_IRON, 1.0F, 0.0F, () ->
+		Ingredient.of(Items.COPPER_INGOT)
+	),
 	EXPOSED_COPPER("exposed_copper", 25, Util.make(new EnumMap<>(ArmorItem.Type.class), (type) -> {
 		type.put(ArmorItem.Type.BOOTS, 2);
 		type.put(ArmorItem.Type.LEGGINGS, 5);
 		type.put(ArmorItem.Type.CHESTPLATE, 6);
 		type.put(ArmorItem.Type.HELMET, 2);
-	}), 12, SoundEvents.ARMOR_EQUIP_IRON, 1.0F, 0.0F, () -> {
-		return Ingredient.of(Items.COPPER_INGOT);
-	}),
+	}), 12, SoundEvents.ARMOR_EQUIP_IRON, 1.0F, 0.0F, () ->
+		Ingredient.of(Items.COPPER_INGOT)
+	),
 	WEATHERED_COPPER("weathered_copper", 25, Util.make(new EnumMap<>(ArmorItem.Type.class), (type) -> {
 		type.put(ArmorItem.Type.BOOTS, 2);
 		type.put(ArmorItem.Type.LEGGINGS, 5);
 		type.put(ArmorItem.Type.CHESTPLATE, 6);
 		type.put(ArmorItem.Type.HELMET, 2);
-	}), 12, SoundEvents.ARMOR_EQUIP_IRON, 1.0F, 0.0F, () -> {
-		return Ingredient.of(Items.COPPER_INGOT);
-	}),
+	}), 12, SoundEvents.ARMOR_EQUIP_IRON, 1.0F, 0.0F, () ->
+		Ingredient.of(Items.COPPER_INGOT)
+	),
 	OXIDIZED_COPPER("oxidized_copper", 25, Util.make(new EnumMap<>(ArmorItem.Type.class), (type) -> {
 		type.put(ArmorItem.Type.BOOTS, 2);
 		type.put(ArmorItem.Type.LEGGINGS, 5);
 		type.put(ArmorItem.Type.CHESTPLATE, 6);
 		type.put(ArmorItem.Type.HELMET, 2);
-	}), 12, SoundEvents.ARMOR_EQUIP_IRON, 1.0F, 0.0F, () -> {
-		return Ingredient.of(Items.COPPER_INGOT);
-	});
+	}), 12, SoundEvents.ARMOR_EQUIP_IRON, 1.0F, 0.0F, () ->
+		Ingredient.of(Items.COPPER_INGOT)
+	);
 
 	private static final EnumMap<ArmorItem.Type, Integer> HEALTH_FUNCTION_FOR_TYPE = Util.make(new EnumMap<>(ArmorItem.Type.class), (type) -> {
 		type.put(ArmorItem.Type.BOOTS, 13);

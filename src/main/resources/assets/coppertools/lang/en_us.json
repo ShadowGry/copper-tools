@@ -1,5 +1,5 @@
 {
-	"itemGroup.copper_tools": "Copper Tools",
+	"item_group.coppertools.copper_tools": "Copper Tools",
 	
 	"item.coppertools.copper_shovel":  "Copper Shovel",
 	"item.coppertools.copper_pickaxe": "Copper Pickaxe",
