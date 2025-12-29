@@ -17,9 +17,9 @@ issueTrackerURL = "https://github.com/ShadowGry/copper-tools/issues"
 
 # Dependency Configurations
 [[dependencies.${mod_id}]]
-	modId = "forge"
+	modId = "neoforge"
 	mandatory = true
-	versionRange = "${forge_version_range}"
+	versionRange = "${neo_version_range}"
 	ordering = "NONE"
 	side = "BOTH"
 
